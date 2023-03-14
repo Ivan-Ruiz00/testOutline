@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/test/resources/features/practicetable.feature"},
-        glue = {"com.sofkau.stepdefinitions"},
+        glue = {"com.sofkau.stepdefinition"},
         publish = true
 )
 public class FormTest {
