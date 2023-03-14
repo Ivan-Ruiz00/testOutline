@@ -17,9 +17,10 @@ public class TableStepDefinition extends WebUI {
         FormPage formPage = new FormPage(super.driver);
         formPage.clickForm();
     }
-    @When("completa la informacion el primer nombre {string}, apellido {string}, edad {int}, correo electronico {string}, salario {int}, departamento {string}")
-    public void completaLaInformacionElPrimerNombreApellidoEdadCorreoElectronicoSalarioDepartamento(String string, String string2, Integer int1, String string3, Integer int2, String string4) {
-
+    @When("completa la informacion el primer nombre {string}, apellido {string}, edad {string}, correo electronico {string}, salario {string}, departamento {string}")
+    public void completaLaInformacionElPrimerNombreApellidoEdadCorreoElectronicoSalarioDepartamento(String string, String string2, String int1, String string3, String int2, String string4) {
+        FormPage formPage=new FormPage(super.driver);
+        formPage.fillMandatoryFields(string,string2,int1,string3,int2,string4);
     }
     @Then("debe observar la tabla con la informacion ingresada")
     public void debeObservarLaTablaConLaInformacionIngresada() {
