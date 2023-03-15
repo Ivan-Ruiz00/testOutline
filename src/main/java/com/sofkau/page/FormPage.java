@@ -1,5 +1,6 @@
 package com.sofkau.page;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FormPage extends CommonActionOnPage {
     public static ArrayList<String> esperados = new ArrayList<>();
@@ -49,7 +51,9 @@ public class FormPage extends CommonActionOnPage {
     @CacheLookup
     @FindBy(id = "department")
     public WebElement department;
-
+    @CacheLookup
+    @FindBy(id = "submit")
+    public WebElement submit;
     public void clickForm() throws InterruptedException {
         WebElement element = driver.findElement(By.xpath("(//div[@class='card-up'])[2]"));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -57,29 +61,34 @@ public class FormPage extends CommonActionOnPage {
         Thread.sleep(200);
         elements.click();
         executor.executeScript("scrollBy(0,500);");
+        Thread.sleep(200);
         practiceTable.click();
+        Thread.sleep(200);
         botonAdd.click();
     }
 
-    public void fillMandatoryFields(String firstName, String lastName, String userEmail, String age, String salary, String department) {
+    public void fillMandatoryFields(String firstName, String lastName, String age, String userEmail, String salary, String department) {
         this.name.sendKeys(firstName);
+        esperados.add(firstName);
         this.lastName.sendKeys(lastName);
+        esperados.add(lastName);
         this.email.sendKeys(userEmail);
+        esperados.add(age);
         this.age.sendKeys(age);
+        esperados.add(userEmail);
         this.salary.sendKeys(salary);
+        esperados.add(salary);
         this.department.sendKeys(department);
+        esperados.add(department);
+        submit.click();
         resultado();
     }
 
     public void resultado() {
         WebElement element;
-        setZoom(55);
-        for (int i = 2; i <= 20; i++) {
-            if (i == 16)
-                i += 2;
-            element = driver.findElement(By.xpath("(//td)[" + i + "]"));
+        for (int i = 22; i <=27; i++) {
+            element = driver.findElement(By.xpath("(//div[@class='rt-td'])[" +i+ "]"));
             obtenidos.add(element.getText());
-            i++;
         }
     }
 }

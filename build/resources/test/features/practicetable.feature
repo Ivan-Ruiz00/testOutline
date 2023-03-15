@@ -11,6 +11,6 @@ Feature: Llenar tabla de usuarios
 
     Examples:
      | firstName | lastName | age | email | salary | department|
-     | "Ivan"    | "Ruiz"   | 22  | "widap57274@huvacliq.com" | 3200000 | "Student" |
-     | "Gerardo" | "Bernal" | 33  | "momeli3038@asoflex.com"  | 3300000 | "Student" |
-     | "James"   | "Muñoz"  | 44  | "damir29305@etondy.com"   | 3400000 | "Student" |
+     | "Ivan"    | "Ruiz"   | "22"  | "widap57274@huvacliq.com" | "3200000" | "Student" |
+     | "Gerardo" | "Bernal" | "33"  | "momeli3038@asoflex.com"  | "3300000" | "Student" |
+     | "James"   | "Muñoz"  | "44"  | "damir29305@etondy.com"   | "3400000" | "Student" |

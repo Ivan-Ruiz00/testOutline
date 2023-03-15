@@ -5,6 +5,8 @@ import org.apache.log4j.Logger;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
+
 public class TableStepDefinition extends WebUI {
     public static Logger LOGGER = Logger.getLogger(String.valueOf(TableStepDefinition.class));
     @Given("el administrador esta en la pagina principal")
@@ -23,7 +25,16 @@ public class TableStepDefinition extends WebUI {
         formPage.fillMandatoryFields(string,string2,int1,string3,int2,string4);
     }
     @Then("debe observar la tabla con la informacion ingresada")
-    public void debeObservarLaTablaConLaInformacionIngresada() {
-
+    public void debeObservarLaTablaConLaInformacionIngresada() throws InterruptedException {
+        Thread.sleep(2000);
+        quitDriver();
+        LOGGER.info("|Esperado|Real|Valor|");
+        for(int i=0;i<6;i++){
+            Assertions.assertEquals(FormPage.esperados.get(i),FormPage.obtenidos.get(i));
+            if(FormPage.esperados.get(i).equalsIgnoreCase(FormPage.obtenidos.get(i)))
+                LOGGER.info(FormPage.esperados.get(i)+"|"+FormPage.obtenidos.get(i)+"|"+"cumple");
+            else
+                LOGGER.info(FormPage.esperados.get(i)+"|"+FormPage.obtenidos.get(i)+"|"+"no cumple");
+        }
     }
 }
