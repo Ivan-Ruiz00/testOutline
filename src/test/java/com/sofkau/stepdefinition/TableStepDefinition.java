@@ -36,5 +36,7 @@ public class TableStepDefinition extends WebUI {
             else
                 LOGGER.info(FormPage.esperados.get(i)+"|"+FormPage.obtenidos.get(i)+"|"+"no cumple");
         }
+        FormPage.esperados.clear();
+        FormPage.obtenidos.clear();
     }
 }
